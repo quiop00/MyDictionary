@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_vn_eng">
+
+    <fragment
+        android:id="@+id/nav_eng_vn"
+        android:name="com.example.mydictionaryv1.ui.eng_vn.eng_vn"
+        android:label="ENG-VIE"
+        tools:layout="@layout/eng_vn_fragment" />
+
+    <fragment
+        android:id="@+id/nav_vn_eng"
+        android:name="com.example.mydictionaryv1.ui.vn_eng.vn_eng"
+        android:label="@string/menu_vn_eng"
+        tools:layout="@layout/vn_eng_fragment" />
+
+    <fragment
+        android:id="@+id/nav_eng_eng"
+        android:name="com.example.mydictionaryv1.ui.eng_eng.eng_eng"
+        android:label="@string/menu_eng_eng"
+        tools:layout="@layout/eng_eng_fragment" />
+
+    <fragment
+        android:id="@+id/nav_favorites"
+        android:name="com.example.mydictionaryv1.ui.favorites.favorites"
+        android:label="@string/menu_favorites"
+        tools:layout="@layout/favorites_fragment" />
+    <fragment
+        android:id="@+id/nav_words"
+        android:name="com.example.mydictionaryv1.ui.my_words.words"
+        android:label="@string/menu_words"
+        tools:layout="@layout/words_fragment"/>
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.example.mydictionaryv1.ui.share.Share"
+        android:label="@string/menu_share"
+        tools:layout="@layout/share_fragment" />
+
+    <fragment
+        android:id="@+id/nav_help"
+        android:name="com.example.mydictionaryv1.ui.help.help"
+        android:label="@string/menu_help"
+        tools:layout="@layout/help_fragment" />
+</navigation>
