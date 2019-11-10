@@ -36,8 +36,9 @@ public class DatabaseAccess {
         while(!cursor.isAfterLast()){
             dem++;
             Data data=new Data();
-            data.setWord(cursor.getString(0));
-            data.setContent(cursor.getString(1));
+            data.setId(cursor.getInt(0));
+            data.setWord(cursor.getString(1));
+            data.setContent(cursor.getString(2));
             list.add(data);
             cursor.moveToNext();
         }
@@ -49,9 +50,31 @@ public class DatabaseAccess {
         ArrayList<String> list=new ArrayList<String>();
         Cursor cursor=database.rawQuery(query,null);
         cursor.moveToFirst();
-        int dem=0;
         while(!cursor.isAfterLast()){
-            dem++;
+            String word;
+            word=cursor.getString(0);
+            list.add(word);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+//    public int getIdByWord(String query){
+//        int id=0;
+//        Cursor cursor=database.rawQuery(query,null);
+//        cursor.moveToFirst();
+//        while(!cursor.isAfterLast()){
+//            id=cursor.getInt(0);
+//            cursor.moveToNext();
+//        }
+//        cursor.close();
+//        return id;
+//    }
+    public ArrayList<String> getWordsAroundId(String query,int id){
+        ArrayList<String> list=new ArrayList<String>();
+        Cursor cursor=database.rawQuery(query+" LIMIT "+(id-1)+",300" ,null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
             String word;
             word=cursor.getString(0);
             list.add(word);

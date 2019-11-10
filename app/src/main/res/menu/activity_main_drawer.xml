@@ -13,9 +13,9 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Vietnamese-English" />
         <item
-            android:id="@+id/nav_eng_eng"
+            android:id="@+id/nav_practice"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="English-English" />
+            android:title="Practice" />
         <item
             android:id="@+id/nav_favorites"
             android:icon="@drawable/ic_menu_share"

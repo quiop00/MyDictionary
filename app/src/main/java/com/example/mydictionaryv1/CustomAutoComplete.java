@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.mydictionaryv1.ui.eng_vn.eng_vn;
@@ -16,9 +17,11 @@ import java.util.ArrayList;
 public class CustomAutoComplete implements TextWatcher {
     public Context context;
     public ArrayList<String> list;
+    public AppCompatAutoCompleteTextView autoCompleteTextView;
     public CustomAutoComplete(Context context){
         this.context = context;
         this.list=new ArrayList<String>();
+
     }
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -33,20 +36,13 @@ public class CustomAutoComplete implements TextWatcher {
           if(fragment instanceof eng_vn){
               mainActivity.searchTerm="SELECT word FROM eng_vn WHERE word LIKE %" + s + "%";
              list=mainActivity.getItemsFromDb(mainActivity.searchTerm);
-             eng_vn engVn=(eng_vn)fragment;
-              engVn.myAdapter=new ArrayAdapter<String>(context,android.R.layout.simple_dropdown_item_1line, list);
-              engVn.autoSearch.setAdapter(engVn.myAdapter);
-//              Bundle bundle = new Bundle();
-//              bundle.putStringArrayList("data",mainActivity.list);
-//              // set Fragmentclass Arguments
-//              eng_vn frag = new eng_vn();
-//              frag.setArguments(bundle);
           }else if(fragment instanceof vn_eng){
               mainActivity.searchTerm="SELECT word FROM vn_eng WHERE word LIKE %" + s + "%";
               list=mainActivity.getItemsFromDb(mainActivity.searchTerm);
-              vn_eng vnEng=(vn_eng) fragment;
-              vnEng.myAdapter=new ArrayAdapter<String>(context,android.R.layout.simple_dropdown_item_1line, list);
-              vnEng.autoSearch.setAdapter(vnEng.myAdapter);
+//              vn_eng vnEng=(vn_eng) fragment;
+//              autoCompleteTextView=vnEng.getView().findViewById(R.id.edt_search);
+//              vnEng.myAdapter=new ArrayAdapter<String>(context,android.R.layout.simple_dropdown_item_1line, list);
+//              autoCompleteTextView.setAdapter(vnEng.myAdapter);
 //              Bundle bundle = new Bundle();
 //              bundle.putStringArrayList("data",mainActivity.list);
 //              // set Fragmentclass Arguments

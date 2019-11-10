@@ -49,14 +49,14 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_eng_vn, R.id.nav_vn_eng, R.id.nav_eng_eng,
+                R.id.nav_eng_vn, R.id.nav_vn_eng, R.id.nav_practice,
                 R.id.nav_favorites,R.id.nav_words, R.id.nav_share, R.id.nav_help)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        fragment=getVisibleFragment();
+
 
     }
     public ArrayList<String> getItemsFromDb(String searchTerm){
@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return null;
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -85,7 +84,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        fragment=getVisibleFragment();
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+
     }
 }

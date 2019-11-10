@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_vn_eng">
+    app:startDestination="@+id/nav_eng_vn">
 
     <fragment
         android:id="@+id/nav_eng_vn"
@@ -18,10 +18,10 @@
         tools:layout="@layout/vn_eng_fragment" />
 
     <fragment
-        android:id="@+id/nav_eng_eng"
-        android:name="com.example.mydictionaryv1.ui.eng_eng.eng_eng"
-        android:label="@string/menu_eng_eng"
-        tools:layout="@layout/eng_eng_fragment" />
+        android:id="@+id/nav_practice"
+        android:name="com.example.mydictionaryv1.ui.practice.Practice"
+        android:label="Practice"
+        tools:layout="@layout/practice_fragment" />
 
     <fragment
         android:id="@+id/nav_favorites"

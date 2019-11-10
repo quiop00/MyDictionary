@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,11 +33,15 @@ class RecyclerViewHolder extends RecyclerView.ViewHolder {
     LinearLayout linearLayout;
     TextView tvWord;
     CardView cardView;
+    CustomAutoComplete autoCompleteTextView;
+    AppCompatAutoCompleteTextView autoComplete;
     public RecyclerViewHolder(View itemView) {
         super(itemView);
         linearLayout=(LinearLayout) itemView.findViewById(R.id.linear);
         cardView=(CardView) itemView.findViewById(R.id.card_view);
         tvWord=itemView.findViewById(R.id.tv_word);
+        autoCompleteTextView=new CustomAutoComplete(itemView.getContext());
+        autoComplete=itemView.findViewById(R.id.edt_search);
     }
 
 }
@@ -47,11 +52,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     int visibleThreshold=5;
     int lastVisibleItem,totalItemCount;
     private Context mContext;
+    private String nameDatabases;
     private List<Data> data = new ArrayList<Data>();
 
-    public RecyclerViewAdapter(Context mContext, List<Data> data,RecyclerView recyclerView) {
+    public RecyclerViewAdapter(Context mContext, List<Data> data,RecyclerView recyclerView,String nameDatabases) {
         this.mContext = mContext;
         this.data = data;
+        this.nameDatabases=nameDatabases;
         final LinearLayoutManager linearLayoutManager = (LinearLayoutManager)recyclerView.getLayoutManager();
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -97,6 +104,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+
         if(holder instanceof  RecyclerViewHolder)
         {
             final Data item = data.get(position);
@@ -108,11 +116,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 public void onClick(View v) {
                     //Toast.makeText(mContext,item.getWord()+"",Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(mContext,Detail.class);
-                    intent.putExtra("word",item.getWord());
-                    intent.putExtra("content",item.getContent());
+                    intent.putExtra("id",item.getId());
+//                    intent.putExtra("word",item.getWord());
+//                    intent.putExtra("content",item.getContent());
+                    intent.putExtra("fragment",nameDatabases);
                     mContext.startActivity(intent);
+
                 }
             });
+
         }
         else if(holder instanceof LoadingViewHolder)
         {
